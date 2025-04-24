@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import data from "../../public/data/data.json";
+import PlanetImage from "../components/PlanetImage";
 
 interface CurrentDestination {
   name: string;
@@ -28,50 +29,51 @@ const Destination = () => {
   }, [chosenDestination]);
 
   return (
-    <div className="w-full h-full flex flex-col p-6 md:p-10 gap-6">
-      <div className="flex w-full justify-center md:justify-start">
-        <h2 className="font-barlow tracking-widest uppercase text-lg md:text-xl">
-          01 Pick your destination
+    <div className="h-full flex flex-col p-6 md:p-10 lg:p-0 lg:py-5 lg:px-40 lg:gap-12">
+
+      <div className="w-full flex flex-col items-center lg:justify-center gap-9 lg:gap-20">
+        <h2 className="w-full font-barlow tracking-widest uppercase text-center md:text-start md:text-lg lg:text-2xl">
+          01 pick your destination
         </h2>
+        <div className="lg:hidden">
+          <PlanetImage src={currentDestination?.images.png!} />
+        </div>
       </div>
 
-      <div className="flex flex-col gap-6">
-        <div className="flex justify-center">
-          <img
-            src={currentDestination?.images.png}
-            alt="planet"
-            className="w-[150px] h-[150px] md:w-[300px] md:h-[300px]"
-          />
+      <div className="w-full h-full flex flex-col lg:flex-row lg:justify-center lg:items-center gap-6 lg:gap-40 lg:mt-10">
+
+        <div className="hidden lg:block ">
+          <PlanetImage src={currentDestination?.images.png!} />
         </div>
 
-        <div className="flex flex-col gap-6 items-center justify-center">
-          <nav className="flex items-center justify-center mt-2 gap-10">
-            {data.destinations.map((destination) => (
-              <button
-                onClick={() => setChosenDestination(destination.name)}
-                className={`font-barlow border-b-2 border-b-transparent ${
-                  destination.name === chosenDestination
-                    ? "border-b-white"
-                    : "hover:border-b-gray-400 duration-150"
-                } text-lg uppercase cursor-pointer`}
-              >
-                {destination.name}
-              </button>
-            ))}
-          </nav>
+        <div className="flex flex-col md:max-w-lg md:mx-auto lg:mx-0 lg:max-w-md gap-6">
+          
+          <div className="w-full flex flex-col items-center lg:items-start gap-6 mt-6">
+            <nav className="w-full flex items-center justify-center lg:justify-start gap-8">
+              {data.destinations.map((destination) => (
+                <button
+                  onClick={() => setChosenDestination(destination.name)}
+                  key={destination.name}
+                  className={`font-barlow uppercase tracking-widest border-b-2 cursor-pointer border-b-transparent md:text-[17px] ${
+                    destination.name === chosenDestination
+                      ? "border-b-3 border-b-white"
+                      : "hover:border-b-gray-400 duration-150"
+                  }`}
+                >
+                  {destination.name}
+                </button>
+              ))}
+            </nav>
+            <h1 className="font-bellefair uppercase text-6xl md:text-8xl">
+              {currentDestination?.name}
+            </h1>
+            <p className="text-center lg:text-start font-barlow md:text-[17px] lg:text-xl">
+              {currentDestination?.description}
+            </p>
+            <hr className="w-full border-[1px] border-[#393a43]" />
+          </div>
 
-          <h1 className="font-bellefair text-7xl uppercase">
-            {currentDestination?.name}
-          </h1>
-
-          <p className="text-center font-barlow text-lg md:max-w-lg">
-            {currentDestination?.description}
-          </p>
-
-          <hr className="w-full border-[1px] border-[#393a43]" />
-
-          <div className="flex flex-col md:flex-row md:justify-between gap-6">
-
+          <div className="w-full flex flex-col md:flex-row md:justify-between gap-6">
             <div className="flex flex-col items-center gap-3">
               <h2 className="font-barlow uppercase tracking-widest text-lg">
                 avg. distance
@@ -89,9 +91,10 @@ const Destination = () => {
                 {currentDestination?.travel}
               </p>
             </div>
-
           </div>
+
         </div>
+        
       </div>
     </div>
   );
