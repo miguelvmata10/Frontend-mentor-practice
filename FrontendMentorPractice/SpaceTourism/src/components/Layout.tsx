@@ -34,7 +34,7 @@ const Layout = () => {
 
   return (
     <div className={`min-h-screen bg-cover bg-center bg-no-repeat ${bgClass}`}>
-      <main className="w-screen h-screen flex flex-col text-white">
+      <main className="w-full min-h-screen flex flex-col text-white">
         <Header />
         <Outlet />
       </main>

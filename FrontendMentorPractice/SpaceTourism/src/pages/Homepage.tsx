@@ -1,6 +1,7 @@
 const Homepage = () => {
   return (
-    <div className="h-full w-full flex flex-col lg:flex-row lg:items-end p-6 md:p-32">
+    <div className="flex-1 flex flex-col justify-between lg:flex-row lg:items-end p-6 md:p-32">
+
       <div className="text-center lg:text-left lg:justify-start flex-1 flex flex-col gap-6">
         <h2 className="font-barlow tracking-widest uppercase text-lg md:text-2xl">
           so, you want to travel
@@ -22,6 +23,7 @@ const Homepage = () => {
           EXPLORE
         </button>
       </div>
+      
     </div>
   );
 };
