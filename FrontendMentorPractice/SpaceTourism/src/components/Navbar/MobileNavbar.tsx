@@ -24,7 +24,7 @@ const MobileNavbar = ({
             <img src={xButton} alt="x_button" />
           </button>
         </div>
-        <Navlinks />
+        <Navlinks setIsHeaderOpen={setisHeaderOpen}/>
       </nav>
     </>
   );
