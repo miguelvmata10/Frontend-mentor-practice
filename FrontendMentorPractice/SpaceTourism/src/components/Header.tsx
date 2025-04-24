@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex w-full lg:items-center h-[88px] md:h-24 lg:h-[136px] overflow-hidden">
+      <div className="flex w-full lg:items-center h-[88px] md:h-24 overflow-hidden">
         <div className="p-6 z-30">
           <img src={logo} alt="logo" />
         </div>
